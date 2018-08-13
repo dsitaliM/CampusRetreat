@@ -1,0 +1,196 @@
+
+html, body {
+    height: 100%;
+}
+
+body {
+    -ms-align-items: center;
+    -o-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.cp.wrap {
+    min-height: 100%;
+    margin-bottom: -100px;
+}
+
+.cp.wrap:after{
+    height: 100px;
+    content: "";
+    display: block;
+}
+
+footer {
+    height: 100px;
+}
+
+.cp.position {
+    padding-top: 5%;
+}
+
+.cp.centering {
+    margin: 1.5em;
+}
+
+.Xmainbgrnd {
+    background-color: white /*rgba(240,7,7,0.04)*/;
+}
+
+.XbtnColor {
+    background-color: rgba(184,114,114,0.61);
+}
+
+.XTextColor {
+    color: #6e2525;
+}
+
+.cp.ref-link {
+    color: #bd3a3a;
+    margin-top: 5em;
+    text-decoration: none;
+    /*font-family: "Segoe UI", sans-serif;*/
+}
+
+.cp.ref-link:hover {
+    color: #6e2525;
+}
+
+.cp.button {
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    /*font-family: "Segoe UI", sans-serif;*/
+    outline: none;
+    border: none;
+    background-color: rgba(184,114,114,0.61);
+    color: #6e2525;
+    margin: 0 0.25em 0 0;
+    font-weight: bold;
+    border-radius: 0.2857rem;
+    padding: 0.6em 1.5em 0.6em;
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(39, 41, 43, 0.15) inset;
+    -webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+}
+
+.cp.button:hover {
+    background: rgba(184,114,114,0.41) none;
+    color: rgba(110, 37, 37, 0.82);
+}
+
+.cp.button:active {
+    background: rgba(184,114,114,0.71);
+}
+
+.cp.paragraph {
+    margin: 2em;
+}
+
+.cp.headertext {
+    font-family: "Brush Script MT", serif;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 3.5em;
+    color: #6e2525;
+    margin-bottom: 0;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    /*text-shadow: 0.02em 0.02em 0.02em rgba(110, 37, 37, 0.82);*/
+}
+
+.cp.middletext {
+    /*font-family: "Segoe UI", sans-serif;*/
+    color: #6e2525;
+    font-size: 1em;
+    margin-bottom: 0.8em;
+    /*text-shadow: 0.02em 0.02em 0.02em rgba(110, 37, 37, 0.82);*/
+}
+
+.cp.maintext {
+    font-family: "Segoe UI", sans-serif;
+    color: #6e2525;
+    font-size: 3em;
+    margin-bottom: 0.1em;
+    margin-top: 0em;
+    /*text-shadow: 0.02em 0.02em 0.02em rgba(110, 37, 37, 0.82);*/
+}
+
+.cp.food {
+    font-family: "Segoe UI", sans-serif;
+    font-style: italic;
+    color: #6e2525;
+    font-size: 0.8em;
+}
+
+.cp.response {
+    padding-top: 10%;
+}
+
+.cp.footer {
+    font-family: "Segoe UI", sans-serif;
+    margin: 2em;
+}
+
+.cp.cpform {
+    font-family: "Segoe UI", sans-serif;
+    color: #6e2525;
+}
+
+.cp.formheader {
+    font-family: "Segoe UI", sans-serif;
+    color: #6e2525;
+    margin: 1em;
+    font-size: larger;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cp.formgroup {
+    font-family: "Brush Script MT", serif;
+}
+
+.cp.endform {
+    margin-top: 1em;
+}
+
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.cp.fieldsection {
+    position: relative;
+}
+
+.cp.details {
+    margin: 2em;
+}
+
+
+.cp.cptable {
+    margin: 1em;
+}
+
+.cp.cptext {
+    font-family: "Segoe UI", sans-serif;
+    color: #6e2525;
+}
+
+#reg, #vis {
+    display: inline-block;
+}
+
+
+
+
+
+
+
+
+

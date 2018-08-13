@@ -1,0 +1,118 @@
+﻿
+@model Guest
+@using CampusRetreat.ViewModels
+
+<div class="cp cpform">
+    <p class="cp formheader">Enter your details below</p>
+    <div>
+        <form class="ui small form cp centering" asp-action="Register" method="post">
+            <div class="ui error message"></div>
+            <h4 class="ui dividing header">Personal Information</h4>
+            <div class="field">
+                <label asp-for="FirstName">Names</label>
+                <div class="two fields">
+                    <div class="four wide field">
+                        <input name="firstname" type="text" placeholder="First Name" asp-for="FirstName"/>
+                    </div>
+                    <div class="four wide field">
+                        <input name="lastname" type="text" placeholder="Last Name" asp-for="LastName"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="two fields">
+                <div class="four wide field">
+                    <label asp-for="Gender">Gender</label>
+                    <select asp-for="Gender" class="ui selection dropdown" name="gender" asp-items="@InputHelpers.Genders">
+                        <option value="" style="display: none;">Gender</option>
+                    </select>
+                </div>
+                <div class="four wide field">
+                    <label asp-for="AgeGroup">Age Group</label>
+                    <select asp-for="AgeGroup" class="ui selection dropdown" name="AgeGroup" asp-items="@InputHelpers.AgeGroups">
+                        <option value="" style="display: none;">Age Group</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="five wide field">
+                <label asp-for="MaritalStatus">Marital Status</label>
+                <select asp-for="MaritalStatus" class="ui selection dropdown" name="MaritalStatus" asp-items="@InputHelpers.MaritalStatuses">
+                    <option value="" style="display: none;">Marital Status</option>
+                </select>
+            </div>
+
+            <h4 class="ui dividing header">Contact Information</h4>
+            <div class="field">
+                <div class="two fields">
+                    <div class="four wide field">
+                        <input name="Email" type="text" placeholder="Email" asp-for="Email"/>
+                    </div>
+                    <div class="four wide field">
+                        <input name="Phone" type="text" placeholder="Phone" asp-for="Phone"/>
+                    </div>
+                    <div class="four wide required field">
+                        <input name="School" type="text" placeholder="School" asp-for="School"/>
+                    </div>
+                    <div class="four wide field">
+                        <div tabindex="0">
+                            <select asp-for="YearOfStudy" class="ui selection dropdown" asp-items="@InputHelpers.YearsOfStudy">
+                                <option value="" style="display: none;">Year of Study</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="ui dividing header">Additional Information</h4>
+            <div class="four wide field">
+                <label asp-for="Member">Membership</label>
+                <select asp-for="Member" class="ui selection dropdown" name="Member" asp-items="@InputHelpers.Memberships">
+                    <option value="" style="display: none;">I am a ...</option>
+                </select>
+            </div>
+            <div class="field">
+                <label asp-for="PrayerRequest">Prayer Request</label>
+                <textarea asp-for="PrayerRequest"></textarea>
+            </div>
+
+            <div class="cp endform align-center">
+                <button type="button" class="cp button" onclick="location.href = '@Url.Action("Index", "Home")'">Cancel</button>
+                <button class="cp button" type="submit" role="button">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $('.dropdown').dropdown('get text');
+    $('.ui.checkbox').checkbox();
+
+    $('.ui.form')
+            .form({
+                fields: {
+                    firstname: {
+                        rules: [{ type : 'empty', prompt: 'You must enter your first name'}]
+                    },
+                    lastname: {
+                        rules: [{ type: 'empty', prompt: 'You must enter your last name'}]
+                    },
+                    Gender: {
+                        rules: [{ type: 'empty', prompt: 'Please select your gender'}]
+                    },
+                    AgeGroup: {
+                        rules: [{ type: 'empty', prompt: 'Please indicate your age group' }]
+                    },
+                    MaritalStatus: {
+                        rules: [{ type: 'empty', prompt: 'Please indicate your marital status'}]
+                    },
+                    Phone: {
+                        rules: [{ type: 'empty', prompt: 'Your phone number is required' }]
+                    },
+                    Member: {
+                        rules: [{ type: 'empty', prompt: 'Please indicated your membership status'}]
+                    }
+                }
+            })
+        ;
+</script>

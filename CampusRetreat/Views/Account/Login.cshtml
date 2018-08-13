@@ -1,0 +1,21 @@
+﻿@model CampusRetreat.ViewModels.LoginViewModel
+
+
+<div class="align-center cp details" style="margin: 10%">
+    <div asp-validation-summary="All"></div>
+    <form asp-action="Login" class="ui form" method="post">
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl"/>
+        <div class="ui raised brown segment">
+            <div class="ui large header" style="color: #6e2525;">Login</div>
+            <div class="field">
+                <label asp-for="LoginToken">Login Token</label>
+                <input asp-for="LoginToken" placeholder="Write your login token here"/>
+            </div>
+            <div class="field">
+                <label asp-for="Password">Login Password</label>
+                <input asp-for="Password" type="password" placeholder="Write your login password here"/>
+            </div>
+        </div>
+        <button class="align-center cp button" type="submit">Login</button>
+    </form>
+</div>

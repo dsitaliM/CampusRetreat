@@ -1,0 +1,100 @@
+﻿@model CampusRetreat.Helpers.PaginatedList<Guest>
+@using static CampusRetreat.Models.Guest
+
+@{
+    var countAll = ViewData["CountAll"];
+    var countVisitors = ViewData["CountVisitors"];
+    var countWorkers = ViewData["CountWorkers"];
+    var countMembers = ViewData["CountMembers"];
+}
+
+<div class="cp cptable">
+    <h3 class="align-center cp cptext">Registered Guests</h3>
+    <form asp-action="Index" method="get">
+        <div class="ui mini menu">
+            <a class="item">Visitors<div class="floating ui teal label">@countVisitors</div></a>
+            <a class="item">Members<div class="floating ui blue label">@countMembers</div></a>
+            <a class="item">Workers<div class="floating ui blue label">@countWorkers</div></a>
+            <a class="item"><strong>Total</strong><div class="floating ui red label">@countAll</div></a>
+            <div class="right menu">
+                <div class="ui action input" style="padding: 0.5em; margin-left: 10px;">
+                    <input type="text" name="searchString" value="@ViewData["currentFilter"]" placeholder="Search...">
+                    <button class="ui mini icon button" type="submit"><i class="search icon"></i></button>
+                </div>
+                <button type="reset" class="ui mini button" style="margin: 0.5em;" onclick="location.href='@Url.Action("Index", "Guest")'">Refresh List</button>
+            </div>
+        </div>
+    </form>
+
+    <form method="post" style="margin-top: 1em; margin-bottom: 1em;">
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th><i class="id badge icon"></i>ID</th>
+                    <th><i class="sort alphabet descending icon"></i><a style="color: black;"asp-route-sortString="@ViewData["sortByName"]">@Html.DisplayNameFor(guest => new Guest().FirstName)</a></th>
+                    <th><i class="mobile icon"></i>Phone</th>
+                    <th><i class="university icon"></i><a style="color: black;"asp-route-sortString="@ViewData["sortByName"]">@Html.DisplayNameFor(guest => new Guest().School)</a></th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var guest in Model)
+                {
+                    if (guest.Member == "visitor")
+                    {
+                        <tr class="positive">
+                            <td>@guest.Id</td>
+                            <td>@($"{guest.FirstName} {guest.LastName}")</td>
+                            <td>@guest.Phone</td>
+                            <td>@guest.School</td>
+                            <td>Visitor</td>
+                            <td><button class="ui mini right labeled icon button" asp-action="DeleteGuest" asp-route-guestId="@guest.Id" type="submit"><i class="red trash icon"></i>Delete</button></td>
+                        </tr>
+                    }
+                    else if (guest.Member == "member")
+                    {
+                        <tr>
+                            <td>@guest.Id</td>
+                            <td>@($"{guest.FirstName} {guest.LastName}")</td>
+                            <td>@guest.Phone</td>
+                            <td>@guest.School</td>
+                            <td>Member</td>
+                            <td><button class="ui mini right labeled icon button" asp-action="DeleteGuest" asp-route-guestId="@guest.Id" type="submit"><i class="red trash icon"></i>Delete</button></td>
+                        </tr>
+
+                    }
+                    else if (guest.Member == "worker")
+                    {
+                        <tr class="warning">
+                            <td>@guest.Id</td>
+                            <td>@($"{guest.FirstName} {guest.LastName}")</td>
+                            <td>@guest.Phone</td>
+                            <td>@guest.School</td>
+                            <td>Worker</td>
+                            <td><button class="ui mini right labeled icon button" asp-action="DeleteGuest" asp-route-guestId="@guest.Id" type="submit"><i class="red trash icon"></i>Delete</button></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </form>
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+    
+    <a asp-action="Index"
+       asp-route-sortString="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["currentFilter"]"
+       class="ui @prevDisabled button"><i class="arrow circle left icon"></i> Previous</a>
+
+    <a asp-action="Index"
+       asp-route-sortString="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["currentFilter"]"
+       class="ui @nextDisabled button">Next <i class="arrow circle right icon"></i></a>
+
+    <a class="ui primary button" asp-action="ExportToCsv">Export to Excel <i class="file excel outline icon"></i></a>
+</div>
